@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body { background: linear-gradient(135deg, #74b9ff, #0984e3); height: 100vh; display: flex; justify-content: center; align-items: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; }
+        .login-container { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); width: 100%; max-width: 400px; }
+        .login-container h2 { margin-bottom: 24px; color: #333; text-align: center; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; outline: none; box-sizing: border-box; }
+        .button-group { display: flex; gap: 12px; margin-bottom: 15px; }
+        .btn { flex: 1; padding: 12px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; text-align: center; text-decoration: none; display: inline-block; }
+        .login-btn { background: #0984e3; color: white; }
+        .login-btn:hover { background: #006bbf; }
+        .signup-link-btn { background: #dfe4ea; color: #2f3542; }
+        .signup-link-btn:hover { background: #ced6e0; }
+        .forgot-password { text-align: center; margin-top: 10px; }
+        .forgot-password a { color: #0984e3; text-decoration: none; font-size: 14px; }
+        .forgot-password a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form action="login.php" method="POST">
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+            <div class="button-group">
+                <button type="submit" class="btn login-btn">Log In</button>
+                <a href="SignUp.html" class="btn signup-link-btn">Sign Up</a>
+            </div>
+            <div class="forgot-password">
+                <a href="forgotPassword">Forgot password?</a>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

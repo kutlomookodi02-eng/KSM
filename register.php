@@ -1,32 +1,26 @@
 <?php
-$input_username = $_POST['username'];
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-// Check username and assign the correct database
-if (strtolower($input_username) === 'hr') {
-    $db_name = 'careers_db';
-    $redirect_page = 'careers_dashboard.html'; 
-} elseif (strtolower($input_username) === 'mgt') {
-    $db_name = 'KSM';
-    $redirect_page = 'management.html';
-} else {
-    // Default fallback database 
-    $db_name = 'KSM';
-    $redirect_page = 'dashboard.html';
-}
-
-$conn = new mysqli('localhost', 'root', '', $db_name);
+// Connect to the 'ksm' database where your user accounts belong
+$conn = new mysqli('localhost', 'root', '', 'ksm');
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-//prepared statement to prevent SQL Injection
-$stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-$stmt->bind_param("ss", $input_username, $password);
+// Ensure form fields are set before processing
+if (!isset($_POST['username']) || !isset($_POST['password'])) {
+    die("Please fill in both fields.");
+}
 
-if ($stmt->execute() === TRUE) {
-    header("Location: " . $redirect_page);
+$username = trim($_POST['username']);
+$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+// Use prepared statements to prevent SQL injection and target the 'username' column safely
+$stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+$stmt->bind_param("ss", $username, $password);
+
+if ($stmt->execute()) {
+    // Redirect to index page upon success
+    header("Location: index.html?success=1");
     exit();
 } else {
     echo "Error: " . $stmt->error;

@@ -1,0 +1,58 @@
+/* General reset to make things look clean */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Times New Roman', serif;
+}
+
+/* Background Section */
+/*.hero-section {
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                      url(''); /* Replace with your actual image name */
+    /*background-size: cover;
+   /* background-position: center;
+   /* height: 400px;
+   /* color: white;
+/*}*/
+
+/* Navbar Layout */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* This makes the links sit in a row */
+.nav-links {
+    display: flex;
+    list-style: none; /* Removes the dots */
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none; /* Removes the underline */
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffd700; /* Gold color on hover */
+}
+
+/* Content Styling */
+.content {
+    text-align: center;
+    padding: 50px;
+}E333
