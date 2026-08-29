@@ -5,7 +5,7 @@ $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 // Check username and assign the correct database
 if (strtolower($input_username) === 'hr') {
     $db_name = 'careers_db';
-    $redirect_page = 'careers_dashboard.html'; // Or your HR page
+    $redirect_page = 'careers_dashboard.html'; 
 } elseif (strtolower($input_username) === 'mgt') {
     $db_name = 'KSM';
     $redirect_page = 'management.html';
