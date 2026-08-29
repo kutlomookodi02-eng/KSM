@@ -1,30 +1,33 @@
 <?php
-// Connect to your database (specify only the database name, not the table)
-$conn = new mysqli('localhost', 'root', '', 'careers_db');
+$input_username = $_POST['username'];
+$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+
+// Check username and assign the correct database
+if (strtolower($input_username) === 'hr') {
+    $db_name = 'careers_db';
+    $redirect_page = 'careers_dashboard.html'; // Or your HR page
+} elseif (strtolower($input_username) === 'mgt') {
+    $db_name = 'KSM';
+    $redirect_page = 'management.html';
+} else {
+    // Default fallback database or user
+    $db_name = 'KSM';
+    $redirect_page = 'dashboard.html';
+}
+
+// Connect to whichever database was selected above
+$conn = new mysqli('localhost', 'root', '', $db_name);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Sanitize and get the username and password
-$username = $_POST['username'];
-$password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-
-// Insert data into your users table
-$sql = "INSERT INTO users (name, email) VALUES ('$username', '$password')";
+// Insert into the users/management table of that specific database
+$sql = "INSERT INTO users (username, password) VALUES ('$input_username', '$password')";
 
 if ($conn->query($sql) === TRUE) {
-    
-    // Check if the username is exactly 'mgt'
-    if (strtolower($username) === 'mgt') {
-        header("Location: management.html");
-        exit();
-    } else {
-        // Default redirect for regular users
-        header("Location: dashboard.php?success=1");
-        exit();
-    }
-
+    header("Location: " . $redirect_page);
+    exit();
 } else {
     echo "Error: " . $sql . "<br>" . $conn->error;
 }
