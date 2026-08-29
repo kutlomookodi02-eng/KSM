@@ -10,27 +10,28 @@ if (strtolower($input_username) === 'hr') {
     $db_name = 'KSM';
     $redirect_page = 'management.html';
 } else {
-    // Default fallback database or user
+    // Default fallback database 
     $db_name = 'KSM';
     $redirect_page = 'dashboard.html';
 }
 
-// Connect to whichever database was selected above
-$conn = new mysqli('localhost', 'root', '', $db_name);
+$conn = new mysqli('localhost', 'root', 'Student@26', $db_name);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Insert into the users/management table of that specific database
-$sql = "INSERT INTO users (username, password) VALUES ('$input_username', '$password')";
+//prepared statement to prevent SQL Injection
+$stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
+$stmt->bind_param("ss", $input_username, $password);
 
-if ($conn->query($sql) === TRUE) {
+if ($stmt->execute() === TRUE) {
     header("Location: " . $redirect_page);
     exit();
 } else {
-    echo "Error: " . $sql . "<br>" . $conn->error;
+    echo "Error: " . $stmt->error;
 }
 
+$stmt->close();
 $conn->close();
 ?>
