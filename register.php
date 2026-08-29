@@ -15,7 +15,7 @@ if (strtolower($input_username) === 'hr') {
     $redirect_page = 'dashboard.html';
 }
 
-$conn = new mysqli('localhost', 'root', 'Student@26', $db_name);
+$conn = new mysqli('localhost', 'root', '', $db_name);
 
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
