@@ -6,14 +6,16 @@
     <title>Add Product - Management Dashboard</title>
     <style>
         body { background: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
-        .form-container { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); width: 100%; max-width: 500px; }
-        h2 { color: #333; margin-bottom: 24px; text-align: center; }
+        .form-container { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); width: 100%; max-width: 500px; box-sizing: border-box; }
+        h2 { color: #333; margin-top: 0; margin-bottom: 24px; text-align: center; }
         .input-group { margin-bottom: 20px; }
         .input-group label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; font-weight: 600; }
         .input-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; outline: none; box-sizing: border-box; }
         .input-group input:focus { border-color: #0984e3; }
-        .btn { background: #0984e3; color: white; width: 100%; padding: 14px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        .btn { background: #0984e3; color: white; width: 100%; padding: 14px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; box-sizing: border-box; text-decoration: none; display: block; text-align: center; }
         .btn:hover { background: #006bbf; }
+        .btn-success { background: #27ae60; margin-top: 12px; }
+        .btn-success:hover { background: #219653; }
         .back-link { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; font-size: 14px; }
         .back-link:hover { text-decoration: underline; }
     </style>
@@ -48,8 +50,9 @@
             </div>
             <button type="submit" class="btn">Save Product</button>
         </form>
+        
+        <a href="export.php" class="btn btn-success">Download Data for Excel Analysis</a>
         <a href="dashboard.html" class="back-link">Back to Dashboard</a>
-<a href="export.php" class="btn" style="background: #27ae60;">Download Data for Excel Analysis</a>
     </div>
 </body>
 </html>
