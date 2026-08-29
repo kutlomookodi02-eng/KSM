@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Product - Management Dashboard</title>
+    <style>
+        body { background: #f4f7f6; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 40px; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .form-container { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); width: 100%; max-width: 500px; }
+        h2 { color: #333; margin-bottom: 24px; text-align: center; }
+        .input-group { margin-bottom: 20px; }
+        .input-group label { display: block; margin-bottom: 8px; color: #666; font-size: 14px; font-weight: 600; }
+        .input-group input { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; outline: none; box-sizing: border-box; }
+        .input-group input:focus { border-color: #0984e3; }
+        .btn { background: #0984e3; color: white; width: 100%; padding: 14px; border: none; border-radius: 6px; font-size: 16px; font-weight: bold; cursor: pointer; transition: background 0.2s; }
+        .btn:hover { background: #006bbf; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; font-size: 14px; }
+        .back-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add New Product</h2>
+        <form action="insert_product.php" method="POST">
+            <div class="input-group">
+                <label for="product_name">Product Name</label>
+                <input type="text" id="product_name" name="product_name" placeholder="Enter product name" required>
+            </div>
+            <div class="input-group">
+                <label for="size">Size</label>
+                <input type="text" id="size" name="size" placeholder="Enter size (e.g., S, M, L)" required>
+            </div>
+            <div class="input-group">
+                <label for="colour">Colour</label>
+                <input type="text" id="colour" name="colour" placeholder="Enter colour" required>
+            </div>
+            <div class="input-group">
+                <label for="price">Price ($)</label>
+                <input type="number" id="price" name="price" step="0.01" placeholder="0.00" required>
+            </div>
+            <div class="input-group">
+                <label for="quantity_available">Quantity Available</label>
+                <input type="number" id="quantity_available" name="quantity_available" placeholder="Enter quantity available" required>
+            </div>
+            <div class="input-group">
+                <label for="quantity_sold">Quantity Sold</label>
+                <input type="number" id="quantity_sold" name="quantity_sold" placeholder="Enter quantity sold" required>
+            </div>
+            <button type="submit" class="btn">Save Product</button>
+        </form>
+        <a href="dashboard.html" class="back-link">Back to Dashboard</a>
+<a href="export.php" class="btn" style="background: #27ae60;">Download Data for Excel Analysis</a>
+    </div>
+</body>
+</html>
